@@ -1,0 +1,37 @@
+<launch>
+
+    <!-- Bag file args -->
+
+    <arg name="bag_file" default="$(env HOME)/Downloads/UPO_pioneer_images_rect_2014-04-28-15-53-18.bag"/>
+
+    <arg name="rate" default="1"/>
+
+    <arg name="image" default="bumblenode/left/image_rect"/>
+
+    <arg name="start" default="0"/>
+
+
+
+    <!-- Uncompress Camera Images -->
+
+    <node pkg="image_transport" type="republish" name="front_repub" args="raw in:=$(arg image) compressed out:=/$(arg image)"/>
+
+
+
+    <!-- BAG Player -->
+
+    <!-- Without the own tf of the bag -->
+
+    <node pkg="rosbag" type="play" name="play" args="$(arg bag_file) -s $(arg start) --clock -r $(arg rate)" >
+
+        <!-- <remap from="/tf" to="/not_used_tf" unless="$(arg use_bag_tf)"/> -->
+
+        <!-- <remap from="/tf_static" to="/tf_static_not_used" unless="$(arg use_bag_tf)"/> -->
+
+    </node>
+
+    <node pkg="image_publish" type="imagePublisher.py" name="image_publish">
+        <remap from="/camera/image/compressed" to="$(arg image)/compressed" />
+    </node>
+
+</launch>
