@@ -7,7 +7,7 @@ Para ello, se ha utilizado el siguiente modelo --> https://www.tensorflow.org/hu
 
 Es normal que la herramienta se demore un poco en la primera vez que se ejecuta.
 
-#Requisitos
+# Requisitos
 Esta herramienta requiere las siguientes librerías:
 
 -os
@@ -32,7 +32,7 @@ Esta herramienta requiere las siguientes librerías:
 
 Descargar TensorFlow Object Detection API --> git clone --depth 1 https://github.com/tensorflow/models
 
-#Uso:
+# Uso:
 Para inicializar la herramienta, lo primero que habrá que hacer será crear un catkin workspace. En la carpeta src de dicho workspace, habrá que añadir la carpeta image_publish que se encuentra en este repositorio.
 
 En el script imagePublisher.py (que también se encuentra en la carpeta image_publish) hay que modificar la siguiente linea:
